@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MIRCII'S PHOTOGRAPHY</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+body {font-family: "Open Sans"}
+.w3-bar-item.active {
+      background-color: #e2bf9d; 
+      color: white; 
+    }
+/* Hamburger menu for mobile */
+@media screen and (max-width: 600px) {
+      #menuDesktop {
+        display: none;
+      }
+      .fa-bars {
+        display: inline-block;
+        font-size: 30px;
+      }
+      #mobileMenu {
+        display: none;
+      }
+      #mobileMenu.w3-show {
+        display: block;
+      }
+    }
+</style>
+</head>
+<body class="w3-light-grey">
+
+    <!-- Navigation bar -->
+    <div class="w3-bar w3-black">
+    <!-- Hamburger icon for mobile -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hide-large w3-hide-medium" onclick="toggleMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+
+    <!-- Normal navigation for larger screens -->
+    <a href="index.html" class="w3-bar-item w3-button w3-hide-small"><img src="home-icon-white.png" alt="Home" style="width:16px; height:16px;"></a>
+    <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small">Gallery</a>
+    <a href="posts.html" class="w3-bar-item w3-button w3-hide-small active">Posts</a>
+    <a href="about.html" class="w3-bar-item w3-button w3-hide-small">About</a>
+    <a href="contact.html" class="w3-bar-item w3-button w3-hide-small">Contact</a>
+
+    <!-- Social media icons -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-small" onclick="toggleSearch()"><i class="fa fa-search"></i></a>
+    <a href="https://www.facebook.com/share/125owspT2E8/?mibextid=wwXIfr" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-facebook-official"></i></a>
+    <a href="https://www.instagram.com/mirciib/" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-instagram"></i></a>
+
+    <!-- Search form (hidden by default) -->
+  <div id="searchForm" class="w3-bar-item w3-button w3-hide-small w3-right w3-white w3-border" style="display:none;">
+    <input type="text" id="searchInput" placeholder="Search..." class="w3-input" style="width: 200px;">
+    <button type="button" class="w3-button w3-black" onclick="searchFunction()">Search</button>
+  </div>
+
+  <!-- Dropdown menu for mobile -->
+  <div id="mobileMenu" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+    <a href="index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="gallery.html" class="w3-bar-item w3-button">Gallery</a>
+    <a href="posts.html" class="w3-bar-item w3-button">Posts</a>
+    <a href="about.html" class="w3-bar-item w3-button">About</a>
+    <a href="contact.html" class="w3-bar-item w3-button">Contact</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button" onclick="toggleSearch()">Search</a>
+    <a href="https://www.facebook.com/share/125owspT2E8/?mibextid=wwXIfr" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i> Facebook</a>
+    <a href="https://www.instagram.com/mirciib/" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i> Instagram</a>
+  </div>
+</div>
+
+  
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1600px">
+
+  <!-- Grid -->
+  <div class="w3-row w3-padding w3-border">
+
+    
+  
+    <!-- Blog entries -->
+    <div class="w3-col l8 s12">
+    
+      <!-- Blog entry -->
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <div class="w3-center">
+          <h3>A peak into history</h3>
+          <h5>Ribat, Monastir <span class="w3-opacity">16 Sep. 2024</span></h5>
+        </div>
+
+        <div class="w3-justify">
+          <img src="photos/IMG-20241220-WA0010.jpg" alt="Ribat" style="width:100%" class="w3-padding-16">
+          <p>The Ribat of Monastir, located on the central coast of Tunisia, is an impressive Islamic fortress built in the 8th century. It served as both a military stronghold and an important religious center during the Aghlabid dynasty. The Ribat is known for its robust architecture and simplicity, blending defensive and spiritual elements. Positioned strategically by the sea, it was also used to protect the coast from external invasions. Today, the Ribat of Monastir is a major tourist attraction and a symbol of the region's Islamic heritage. It also offers stunning views of the city of Monastir and the Mediterranean Sea.</p>
+          <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
+          <p class="w3-right"><button class="w3-button w3-black" onclick="myFunction('demo1')" id="myBtn"><b>Replies  </b> <span class="w3-tag w3-white">1</span></button></p>
+          <p class="w3-clear"></p>
+          <div class="w3-row w3-margin-bottom" id="demo1" style="display:none">
+            <hr>
+              <div class="w3-col l10 m9">
+                <h4>George <span class="w3-opacity w3-medium">18 Nov. 2024, 6:32 PM</span></h4>
+                <p>Great blog post! Following</p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Blog entry -->
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <div class="w3-center">
+          <h3>Mediterranean Blue</h3>
+          <h5>Sidi Bou Said, <span class="w3-opacity">14 Sep. 2024</span></h5>
+        </div>
+
+        <div class="w3-justify">
+          <img src="photos/IMG-20241220-WA0050.jpg" alt="windows" style="width:70%; display:block; margin: 0 auto;" class="w3-padding-16">
+          <p>Sidi Bou Said is a picturesque coastal village in Tunisia, famous for its stunning white-and-blue architecture, which reflects the vibrant colors of the Mediterranean. Perched on a hill overlooking the sea, the village is a serene blend of history, art, and nature. The iconic blue doors, shutters, and wrought-iron balconies create a striking contrast against the whitewashed buildings, making Sidi Bou Said one of the most photographed spots in Tunisia. With its charming narrow streets, beautiful views, and artistic atmosphere, it has long been a favorite retreat for artists and travelers alike.</p>
+          <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
+          <p class="w3-clear"></p>
+          
+          <!-- Example of comment field -->
+          <div id="demo2" style="display:none">
+            
+          </div>
+        </div>
+      </div>
+      
+    <!-- END BLOG ENTRIES -->
+    </div>
+
+    <!-- About/Information menu -->
+    <div class="w3-col l4">
+
+      <!-- Posts -->
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Most Viewed Stories</h4>
+        </div>
+        <ul class="w3-ul w3-hoverable w3-white">
+          <li class="w3-padding-16">
+            <img src="photos/IMG-20241220-WA0009.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px; height:50px;">
+            <span class="w3-large">Tower of Ribat</span>
+            <br>
+            <span>Monastir, Tunisia</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="photos/IMG-20241220-WA0011.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px; height:50px;">
+            <span class="w3-large">Greenary in Ribat</span>
+            <br>
+            <span>Monastir, Tunisia</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="photos/IMG-20241220-WA0013.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px; height:50px;">
+            <span class="w3-large">Through Empty Hallways</span>
+            <br>
+            <span>El Jem, Tunisia</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="photos/IMG-20241220-WA0015.jpg" alt="Image" class="w3-left w3-margin-right w3-sepia" style="width:50px; height:50px;">
+            <span class="w3-large">El Jem is a Gem</span>
+            <br>
+            <span>El Jem, Tunisia</span>
+          </li>
+        </ul>
+      </div>
+      <hr>
+
+      <!-- Advertising -->
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Advertise</h4>
+        </div>
+        <div class="w3-container w3-white">
+          <div class="w3-container w3-display-container w3-light-grey w3-section" style="height:200px">
+            <span class="w3-display-middle">Your AD Here</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Follow Me</h4>
+        </div>
+        <div class="w3-container w3-xlarge w3-padding">
+          <a href="https://www.facebook.com/people/Mircea-Micicoi/pfbid0bwsfzZBGE6TMWghP3vEjR9ufDbuDGzbTw8vsrYqLr3USAbchbkxX6GkF5VgqXBfBl/?mibextid=wwXIfr&rdid=aWVs3U1c7nfghVv8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F125owspT2E8%2F%3Fmibextid%3DwwXIfr" class="w3-margin-right"  target="_blank"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+          <a href="https://www.instagram.com/mirciib/" class="w3-margin-right"  target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+          <a href="https://www.linkedin.com/in/mircea-micicoi/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="w3-margin-right"  target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+        </div>
+      </div>
+      <hr>
+      
+      <!-- Subscribe -->
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Subscribe</h4>
+        </div>
+        <div class="w3-container w3-white">
+          <p>Enter your e-mail below and get notified on the latest blog posts.</p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
+          <p><button type="button" onclick="document.getElementById('subscribe').style.display='block'" class="w3-button w3-block w3-red">Subscribe</button></p>
+        </div>
+      </div>
+
+    <!-- END About/Intro Menu -->
+    </div>
+
+  <!-- END GRID -->
+  </div>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Subscribe Modal -->
+<div id="subscribe" class="w3-modal w3-animate-opacity">
+  <div class="w3-modal-content" style="padding:32px">
+    <div class="w3-container w3-white">
+      <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
+      <h2 class="w3-wide">SUBSCRIBE</h2>
+      <p>Join my mailing list to receive updates on the latest blog posts and other things.</p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+      <button type="button" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('subscribe').style.display='none'">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey" style="padding:32px">
+  <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+    <p>© 2024 Mircii's Photography | Designed by Mircea Micicoi</p>
+</footer>
+
+
+<script>
+// Toggle between hiding and showing blog replies/comments
+document.getElementById("myBtn").click();
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+function likeFunction(x) {
+  x.style.fontWeight = "bold";
+  x.innerHTML = "✓ Liked";
+
+  // Obține adresa curentă a paginii
+  var currentPage = window.location.pathname;
+  
+  // Selectează toate link-urile de navigație
+  var links = document.querySelectorAll('.w3-bar-item');
+
+  // Parcurge link-urile și adaugă clasa "active" la cel care corespunde paginii curente
+  links.forEach(function(link) {
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
+  });
+
+}
+
+// Toggle mobile menu visibility
+function toggleMenu() {
+    var menu = document.getElementById("mobileMenu");
+    if (menu.className.indexOf("w3-show") == -1) {
+        menu.className += " w3-show";
+    } else {
+        menu.className = menu.className.replace(" w3-show", "");
+    }
+}
+// Toggle between hiding and showing the search form
+function toggleSearch() {
+  var searchForm = document.getElementById("searchForm");
+  if (searchForm.style.display === "none") {
+    searchForm.style.display = "block";
+  } else {
+    searchForm.style.display = "none";
+  }
+}
+
+// Function to search in the page and highlight matching text
+function searchFunction() {
+  // Get the search term
+  var query = document.getElementById("searchInput").value.toLowerCase();
+  var pageContent = document.body;
+
+  // Remove previous highlights
+  var previousHighlights = pageContent.querySelectorAll(".highlight");
+  previousHighlights.forEach(function(highlight) {
+    highlight.classList.remove("highlight");
+  });
+
+  // If the search query is empty, return
+  if (query === "") return;
+
+  // Create a regular expression to search for the query (case insensitive)
+  var regex = new RegExp(query, "gi");
+
+  // Find all elements containing text (e.g., paragraphs, headings)
+  var elements = pageContent.querySelectorAll("p, h1, h2, h3, h4, h5, h6, span");
+
+  elements.forEach(function(element) {
+    var text = element.textContent || element.innerText;
+    
+    // If the element contains the search query, highlight it
+    if (text.match(regex)) {
+      var innerHTML = element.innerHTML;
+      var newHTML = innerHTML.replace(regex, function(match) {
+        return "<span class='highlight'>" + match + "</span>";
+      });
+      element.innerHTML = newHTML;
+    }
+  });
+}
+
+// Style for highlighted text
+var style = document.createElement('style');
+style.innerHTML = `
+  .highlight {
+    background-color: yellow;
+    color: black;
+  }
+`;
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>

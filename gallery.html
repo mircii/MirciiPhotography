@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Open+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    h1, h2, h3, h4, h5, h6 { font-family: "Oswald" }
+    body { font-family: "Open Sans" }
+    .w3-bar-item.active {
+      background-color: #e2bf9d;
+      color: white;
+    }
+    .w3-container { padding: 16px; }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 10px;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Trei elemente pe rând */
+      gap: 20px; /* Spațiu între elemente */
+      justify-content: center; /* Centrează grila pe orizontală */
+      max-width: 1000px; /* Lățime maximă a grilei */
+      margin: 0 auto; /* Centrează containerul în pagină */
+      padding: 20px; /* Spațiu în interiorul grilei */
+    }
+
+    .grid-item img, .grid-item video, #photos img, #reels video {
+      max-width: 90%; /* Dimensiune maximă a fiecărui element */
+      height: auto; /* Păstrează proporțiile */
+      display: block; /* Afișează ca bloc */
+      margin: 0 auto; /* Centrează în interiorul cardului */
+      border-radius: 8px; /* Colțuri rotunjite */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Umbra elementelor */
+    }
+    .reels, .photos { display: none; }
+    .w3-btn {
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .w3-btn:hover {
+      opacity: 0.8;
+    }
+    .carousel-container {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+      height: 400px; /* Setează o înălțime fixă pentru carusel */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .carousel-container img {
+      width: 50%;
+      display: none;
+    }
+    .carousel-container img.active {
+      display: block;
+    }
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .carousel-controls span {
+      cursor: pointer;
+      font-size: 2em;
+      color: rgb(255, 255, 255);
+      user-select: none;
+    }
+
+    /* Hamburger menu for mobile */
+    @media screen and (max-width: 600px) {
+      #menuDesktop {
+        display: none;
+      }
+      .fa-bars {
+        display: inline-block;
+        font-size: 30px;
+      }
+      #mobileMenu {
+        display: none;
+      }
+      #mobileMenu.w3-show {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body class="w3-light-grey">
+
+  <!-- Navigation bar -->
+  <div class="w3-bar w3-black">
+    <!-- Hamburger icon for mobile -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hide-large w3-hide-medium" onclick="toggleMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+
+    <!-- Normal navigation for larger screens -->
+    <a href="index.html" class="w3-bar-item w3-button w3-hide-small"><img src="home-icon-white.png" alt="Home" style="width:16px; height:16px;"></a>
+    <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small active">Gallery</a>
+    <a href="posts.html" class="w3-bar-item w3-button w3-hide-small">Posts</a>
+    <a href="about.html" class="w3-bar-item w3-button w3-hide-small">About</a>
+    <a href="contact.html" class="w3-bar-item w3-button w3-hide-small">Contact</a>
+
+    <!-- Social media icons -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-small" onclick="toggleSearch()"><i class="fa fa-search"></i></a>
+    <a href="https://www.facebook.com/share/125owspT2E8/?mibextid=wwXIfr" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-facebook-official"></i></a>
+    <a href="https://www.instagram.com/mirciib/" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-instagram"></i></a>
+
+    <!-- Search form (hidden by default) -->
+  <div id="searchForm" class="w3-bar-item w3-button w3-hide-small w3-right w3-white w3-border" style="display:none;">
+    <input type="text" id="searchInput" placeholder="Search..." class="w3-input" style="width: 200px;">
+    <button type="button" class="w3-button w3-black" onclick="searchFunction()">Search</button>
+  </div>
+
+  <!-- Dropdown menu for mobile -->
+  <div id="mobileMenu" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+    <a href="index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="gallery.html" class="w3-bar-item w3-button">Gallery</a>
+    <a href="posts.html" class="w3-bar-item w3-button">Posts</a>
+    <a href="about.html" class="w3-bar-item w3-button">About</a>
+    <a href="contact.html" class="w3-bar-item w3-button">Contact</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button" onclick="toggleSearch()">Search</a>
+    <a href="https://www.facebook.com/share/125owspT2E8/?mibextid=wwXIfr" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i> Facebook</a>
+    <a href="https://www.instagram.com/mirciib/" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i> Instagram</a>
+  </div>
+</div>
+
+  <!-- Main Content -->
+  <div class="w3-content" style="max-width:1600px;">
+
+    <!-- Carusel of Images -->
+    <div class="w3-container w3-center w3-padding-64">
+      <h2><b>Discover My Photography</b></h2>
+      <div class="carousel-container">
+        <img src="photos/IMG-20241220-WA0009.jpg" alt="Image1" class="active">
+        <img src="photos/IMG-20241220-WA0011.jpg" alt="Image2">
+        <img src="photos/IMG-20241220-WA0013.jpg" alt="Image3">
+        <div class="carousel-controls">
+          <span onclick="changeSlide(-1)">&#10094;</span>
+          <span onclick="changeSlide(1)">&#10095;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons to toggle between Photos and Reels -->
+    <div class="w3-center">
+      <button class="w3-btn w3-black" onclick="showTab('photos')">Photos</button>
+      <button class="w3-btn w3-black" onclick="showTab('reels')">Reels</button>
+    </div>
+
+    <!-- Grid of Photos -->
+    <div id="photos" class="grid-container w3-padding-64 photos">
+      <img src="photos/IMG-20241220-WA0050.jpg" alt="photo1">
+      <img src="photos/IMG-20241220-WA0052.jpg" alt="photo2">
+      <img src="photos/IMG-20241220-WA0055.jpg" alt="photo3">
+      <img src="photos/IMG-20241220-WA0043.jpg" alt="photo4">
+      <img src="photos/IMG-20241220-WA0042.jpg" alt="photo4">
+      <img src="photos/IMG-20241220-WA0041.jpg" alt="photo4">
+      <img src="photos/IMG-20241220-WA0040.jpg" alt="photo4">
+    </div>
+
+    <!-- Grid of Videos -->
+    <div id="reels" class="grid-container w3-padding-64 reels">
+      <video width="100%" controls>
+        <source src="videos/WhatsApp Video 2024-12-21 at 12.01.25_9cdd273f.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video width="100%" controls>
+        <source src="videos/WhatsApp Video 2024-12-21 at 12.01.54_a686a8f4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video width="100%" controls>
+        <source src="videos/WhatsApp Video 2024-12-21 at 12.04.01_94312c87.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-dark-grey w3-padding-32 w3-center">
+    <p>© 2024 Mircii's Photography | Designed by Mircea Micicoi</p>
+  </footer>
+
+  <script>
+    // Carusel logic
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.carousel-container img');
+
+    function changeSlide(n) {
+      slides[slideIndex].classList.remove('active');
+      slideIndex = (slideIndex + n + slides.length) % slides.length;
+      slides[slideIndex].classList.add('active');
+    }
+
+    // Toggle tabs logic
+    function showTab(tabName) {
+      document.getElementById('photos').style.display = (tabName === 'photos') ? 'grid' : 'none';
+      document.getElementById('reels').style.display = (tabName === 'reels') ? 'grid' : 'none';
+    }
+
+    // Show photos by default
+    showTab('photos');
+
+    // Toggle mobile menu visibility
+    function toggleMenu() {
+      var menu = document.getElementById("mobileMenu");
+      if (menu.className.indexOf("w3-show") == -1) {
+        menu.className += " w3-show";
+      } else {
+        menu.className = menu.className.replace(" w3-show", "");
+      }
+    }
+
+    // Toggle between hiding and showing the search form
+function toggleSearch() {
+  var searchForm = document.getElementById("searchForm");
+  if (searchForm.style.display === "none") {
+    searchForm.style.display = "block";
+  } else {
+    searchForm.style.display = "none";
+  }
+}
+
+// Function to search in the page and highlight matching text
+function searchFunction() {
+  // Get the search term
+  var query = document.getElementById("searchInput").value.toLowerCase();
+  var pageContent = document.body;
+
+  // Remove previous highlights
+  var previousHighlights = pageContent.querySelectorAll(".highlight");
+  previousHighlights.forEach(function(highlight) {
+    highlight.classList.remove("highlight");
+  });
+
+  // If the search query is empty, return
+  if (query === "") return;
+
+  // Create a regular expression to search for the query (case insensitive)
+  var regex = new RegExp(query, "gi");
+
+  // Find all elements containing text (e.g., paragraphs, headings)
+  var elements = pageContent.querySelectorAll("p, h1, h2, h3, h4, h5, h6, span");
+
+  elements.forEach(function(element) {
+    var text = element.textContent || element.innerText;
+    
+    // If the element contains the search query, highlight it
+    if (text.match(regex)) {
+      var innerHTML = element.innerHTML;
+      var newHTML = innerHTML.replace(regex, function(match) {
+        return "<span class='highlight'>" + match + "</span>";
+      });
+      element.innerHTML = newHTML;
+    }
+  });
+}
+
+// Style for highlighted text
+var style = document.createElement('style');
+style.innerHTML = `
+  .highlight {
+    background-color: yellow;
+    color: black;
+  }
+`;
+document.head.appendChild(style);
+  </script>
+
+</body>
+</html>

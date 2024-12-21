@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Me - Mircii</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    h1, h2, h3, h4, h5, h6 { font-family: "Oswald"; }
+    body { font-family: "Open Sans"; }
+    .w3-bar-item.active {
+      background-color: #e2bf9d; 
+      color: white; 
+    }
+    /* Dark mode styles */
+    .w3-dark-theme {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    .w3-dark-theme .w3-bar {
+      background-color: #333;
+      color: #fff;
+    }
+    .w3-dark-theme .w3-button {
+      color: #fff;
+      border-color: #333;
+    }
+    .w3-dark-theme .w3-container {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+
+    /* Hamburger menu for mobile */
+    @media screen and (max-width: 600px) {
+      #menuDesktop {
+        display: none;
+      }
+      .fa-bars {
+        display: inline-block;
+        font-size: 30px;
+      }
+      #mobileMenu {
+        display: none;
+      }
+      #mobileMenu.w3-show {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body class="w3-dark-theme">
+
+  <!-- Navigation bar -->
+  <div class="w3-bar w3-black">
+    <!-- Hamburger icon for mobile -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hide-large w3-hide-medium" onclick="toggleMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+
+    <!-- Normal navigation for larger screens -->
+    <a href="index.html" class="w3-bar-item w3-button w3-hide-small"><img src="home-icon-white.png" alt="Home" style="width:16px; height:16px;"></a>
+    <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small">Gallery</a>
+    <a href="posts.html" class="w3-bar-item w3-button w3-hide-small">Posts</a>
+    <a href="about.html" class="w3-bar-item w3-button w3-hide-small active">About</a>
+    <a href="contact.html" class="w3-bar-item w3-button w3-hide-small">Contact</a>
+
+    <!-- Dark mode toggle button -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-small" onclick="toggleDarkMode()">
+      <i class="fa fa-moon-o"></i> Dark Mode
+    </a>
+
+    <!-- Social media icons -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-small" onclick="toggleSearch()"><i class="fa fa-search"></i></a>
+    <a href="https://www.facebook.com/share/125owspT2E8/?mibextid=wwXIfr" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-facebook-official"></i></a>
+    <a href="https://www.instagram.com/mirciib/" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-instagram"></i></a>
+
+    <!-- Search form (hidden by default) -->
+    <div id="searchForm" class="w3-bar-item w3-button w3-hide-small w3-right w3-white w3-border" style="display:none;">
+    <input type="text" id="searchInput" placeholder="Search..." class="w3-input" style="width: 200px;">
+    <button type="button" class="w3-button w3-black" onclick="searchFunction()">Search</button>
+  </div>
+
+  <!-- Dropdown menu for mobile -->
+  <div id="mobileMenu" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+    <a href="index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="gallery.html" class="w3-bar-item w3-button">Gallery</a>
+    <a href="posts.html" class="w3-bar-item w3-button">Posts</a>
+    <a href="about.html" class="w3-bar-item w3-button">About</a>
+    <a href="contact.html" class="w3-bar-item w3-button">Contact</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button" onclick="toggleSearch()">Search</a>
+    <a href="https://www.facebook.com/share/125owspT2E8/?mibextid=wwXIfr" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i> Facebook</a>
+    <a href="https://www.instagram.com/mirciib/" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i> Instagram</a>
+  </div>
+</div>
+
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>About Me</b></h1>
+    <p class="w3-opacity">Discover who I am and what drives my passion for photography</p>
+  </header>
+
+  <!-- Main Content -->
+  <div class="w3-content w3-margin-top" style="max-width:800px">
+    <!-- Introduction -->
+    <div class="w3-container w3-white w3-padding-large w3-margin-bottom">
+      <h2 class="w3-text-black">Hi there, Mircii here!</h2>
+      <p>I’m a 22-year-old student and passionate photographer, always on the lookout for moments that inspire. This blog is where I share the visual stories I capture during my travels around the world.</p>
+      <p>Through my lens, I aim to turn breathtaking landscapes, vibrant cultures, and authentic emotions into lasting memories</p>
+      <p>Join me on this visual journey and let’s explore the beauty and diversity our world has to offer!</p>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="w3-container w3-padding-large w3-white">
+      <h3>Follow Me</h3>
+      <p>Stay connected and discover my latest work:</p>
+      <div class="w3-xlarge">
+        <a href="https://www.facebook.com/people/Mircea-Micicoi/pfbid0bwsfzZBGE6TMWghP3vEjR9ufDbuDGzbTw8vsrYqLr3USAbchbkxX6GkF5VgqXBfBl/?mibextid=wwXIfr" class="w3-margin-right"  target="_blank"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+          <a href="https://www.instagram.com/mirciib/" class="w3-margin-right"  target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+          <a href="https://www.linkedin.com/in/mircea-micicoi/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="w3-margin-right"  target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-dark-grey w3-padding-32 w3-center">
+    <p>© 2024 Mircii's Photography | Designed by Mircea Micicoi</p>
+  </footer>
+
+  <script>
+  // Toggle mobile menu visibility
+  function toggleMenu() {
+    var menu = document.getElementById("mobileMenu");
+    if (menu.className.indexOf("w3-show") == -1) {
+        menu.className += " w3-show";
+    } else {
+        menu.className = menu.className.replace(" w3-show", "");
+    }
+}
+// Toggle between hiding and showing the search form
+function toggleSearch() {
+  var searchForm = document.getElementById("searchForm");
+  if (searchForm.style.display === "none") {
+    searchForm.style.display = "block";
+  } else {
+    searchForm.style.display = "none";
+  }
+}
+
+// Toggle dark mode
+function toggleDarkMode() {
+  var body = document.body;
+  body.classList.toggle("w3-light-gray");
+}
+
+// Function to search in the page and highlight matching text
+function searchFunction() {
+  // Get the search term
+  var query = document.getElementById("searchInput").value.toLowerCase();
+  var pageContent = document.body;
+
+  // Remove previous highlights
+  var previousHighlights = pageContent.querySelectorAll(".highlight");
+  previousHighlights.forEach(function(highlight) {
+    highlight.classList.remove("highlight");
+  });
+
+  // If the search query is empty, return
+  if (query === "") return;
+
+  // Create a regular expression to search for the query (case insensitive)
+  var regex = new RegExp(query, "gi");
+
+  // Find all elements containing text (e.g., paragraphs, headings)
+  var elements = pageContent.querySelectorAll("p, h1, h2, h3, h4, h5, h6, span");
+
+  elements.forEach(function(element) {
+    var text = element.textContent || element.innerText;
+    
+    // If the element contains the search query, highlight it
+    if (text.match(regex)) {
+      var innerHTML = element.innerHTML;
+      var newHTML = innerHTML.replace(regex, function(match) {
+        return "<span class='highlight'>" + match + "</span>";
+      });
+      element.innerHTML = newHTML;
+    }
+  });
+}
+
+// Style for highlighted text
+var style = document.createElement('style');
+style.innerHTML = `
+  .highlight {
+    background-color: yellow;
+    color: black;
+  }
+`;
+document.head.appendChild(style);
+  </script>
+
+</body>
+</html>

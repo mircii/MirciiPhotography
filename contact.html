@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Me - Mircii</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    h1, h2, h3, h4, h5, h6 { font-family: "Oswald"; }
+    body { font-family: "Open Sans"; }
+    .w3-bar-item.active {
+      background-color: #e2bf9d; 
+      color: white; 
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    .success {
+      color: green;
+      font-size: 1em;
+    }
+    /* Hamburger menu for mobile */
+    @media screen and (max-width: 600px) {
+      #menuDesktop {
+        display: none;
+      }
+      .fa-bars {
+        display: inline-block;
+        font-size: 30px;
+      }
+      #mobileMenu {
+        display: none;
+      }
+      #mobileMenu.w3-show {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body class="w3-light-grey">
+
+  <!-- Navigation bar -->
+  <div class="w3-bar w3-black">
+    <!-- Hamburger icon for mobile -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hide-large w3-hide-medium" onclick="toggleMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+
+    <!-- Normal navigation for larger screens -->
+    <a href="index.html" class="w3-bar-item w3-button w3-hide-small"><img src="home-icon-white.png" alt="Home" style="width:16px; height:16px;"></a>
+    <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small">Gallery</a>
+    <a href="posts.html" class="w3-bar-item w3-button w3-hide-small">Posts</a>
+    <a href="about.html" class="w3-bar-item w3-button w3-hide-small">About</a>
+    <a href="contact.html" class="w3-bar-item w3-button w3-hide-small active">Contact</a>
+
+    <!-- Social media icons -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-small" onclick="toggleSearch()"><i class="fa fa-search"></i></a>
+    <a href="https://www.facebook.com/share/125owspT2E8/?mibextid=wwXIfr" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-facebook-official"></i></a>
+    <a href="https://www.instagram.com/mirciib/" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-instagram"></i></a>
+
+    <!-- Search form (hidden by default) -->
+  <div id="searchForm" class="w3-bar-item w3-button w3-hide-small w3-right w3-white w3-border" style="display:none;">
+    <input type="text" id="searchInput" placeholder="Search..." class="w3-input" style="width: 200px;">
+    <button type="button" class="w3-button w3-black" onclick="searchFunction()">Search</button>
+  </div>
+
+  <!-- Dropdown menu for mobile -->
+  <div id="mobileMenu" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+    <a href="index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="gallery.html" class="w3-bar-item w3-button">Gallery</a>
+    <a href="posts.html" class="w3-bar-item w3-button">Posts</a>
+    <a href="about.html" class="w3-bar-item w3-button">About</a>
+    <a href="contact.html" class="w3-bar-item w3-button">Contact</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button" onclick="toggleSearch()">Search</a>
+    <a href="https://www.facebook.com/share/125owspT2E8/?mibextid=wwXIfr" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i> Facebook</a>
+    <a href="https://www.instagram.com/mirciib/" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i> Instagram</a>
+  </div>
+</div>
+
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Contact</b></h1>
+    <p class="w3-opacity">Get in touch with me!</p>
+  </header>
+
+  <!-- Main Content -->
+  <div class="w3-content w3-margin-top" style="max-width:800px">
+    <div class="w3-card w3-white w3-padding">
+      <form id="contactForm" onsubmit="return validateForm()">
+        <label for="name"><b>Name</b></label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" id="name" name="name" placeholder="Your name">
+        <span class="error" id="nameError"></span>
+
+        <label for="email"><b>Email</b></label>
+        <input class="w3-input w3-border w3-margin-bottom" type="email" id="email" name="email" placeholder="Your email">
+        <span class="error" id="emailError"></span>
+
+        <label for="message"><b>Message</b></label>
+        <textarea class="w3-input w3-border w3-margin-bottom" id="message" name="message" placeholder="Your message form me here :)" rows="5"></textarea>
+        <span class="error" id="messageError"></span>
+
+        <button class="w3-button w3-black w3-margin-top" type="submit">Send</button>
+        <p id="formSuccess" class="success"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-dark-grey w3-padding-32 w3-center">
+    <p>© 2024 Mircii's Photography | Designed by Mircea Micicoi</p>
+  </footer>
+
+  <!-- JavaScript Validation -->
+  <script>
+    function validateForm() {
+      let isValid = true;
+
+      // Clear previous errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('messageError').textContent = '';
+      document.getElementById('formSuccess').textContent = '';
+
+      // Get form values
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // Name validation
+      if (!name) {
+        document.getElementById('nameError').textContent = 'Name is required.';
+        isValid = false;
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email) {
+        document.getElementById('emailError').textContent = 'Email is required.';
+        isValid = false;
+      } else if (!emailRegex.test(email)) {
+        document.getElementById('emailError').textContent = 'Invalid email format.';
+        isValid = false;
+      }
+
+      // Message validation
+      if (!message) {
+        document.getElementById('messageError').textContent = 'Message is required.';
+        isValid = false;
+      }
+
+      // If valid, show success message
+      if (isValid) {
+        document.getElementById('formSuccess').textContent = 'Your message has been sent successfully!';
+      }
+
+      return isValid;
+    }
+    // Toggle mobile menu visibility
+    function toggleMenu() {
+        var menu = document.getElementById("mobileMenu");
+        if (menu.className.indexOf("w3-show") == -1) {
+            menu.className += " w3-show";
+        } else {
+            menu.className = menu.className.replace(" w3-show", "");
+        }
+    }
+    // Toggle between hiding and showing the search form
+function toggleSearch() {
+  var searchForm = document.getElementById("searchForm");
+  if (searchForm.style.display === "none") {
+    searchForm.style.display = "block";
+  } else {
+    searchForm.style.display = "none";
+  }
+}
+
+// Function to search in the page and highlight matching text
+function searchFunction() {
+  // Get the search term
+  var query = document.getElementById("searchInput").value.toLowerCase();
+  var pageContent = document.body;
+
+  // Remove previous highlights
+  var previousHighlights = pageContent.querySelectorAll(".highlight");
+  previousHighlights.forEach(function(highlight) {
+    highlight.classList.remove("highlight");
+  });
+
+  // If the search query is empty, return
+  if (query === "") return;
+
+  // Create a regular expression to search for the query (case insensitive)
+  var regex = new RegExp(query, "gi");
+
+  // Find all elements containing text (e.g., paragraphs, headings)
+  var elements = pageContent.querySelectorAll("p, h1, h2, h3, h4, h5, h6, span");
+
+  elements.forEach(function(element) {
+    var text = element.textContent || element.innerText;
+    
+    // If the element contains the search query, highlight it
+    if (text.match(regex)) {
+      var innerHTML = element.innerHTML;
+      var newHTML = innerHTML.replace(regex, function(match) {
+        return "<span class='highlight'>" + match + "</span>";
+      });
+      element.innerHTML = newHTML;
+    }
+  });
+}
+
+// Style for highlighted text
+var style = document.createElement('style');
+style.innerHTML = `
+  .highlight {
+    background-color: yellow;
+    color: black;
+  }
+`;
+document.head.appendChild(style);
+  </script>
+
+</body>
+</html>
